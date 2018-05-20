@@ -2,6 +2,7 @@ package player
 
 import (
 	"fmt"
+	"sort"
 	"strings"
 )
 
@@ -26,5 +27,6 @@ type WithTeam struct {
 }
 
 func (p WithTeam) String() string {
+	sort.Strings(p.Teams)
 	return fmt.Sprintf("%s; %s; %v", p.Name, p.Age, strings.TrimSpace(strings.Join(p.Teams, ", ")))
 }
