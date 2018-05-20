@@ -62,6 +62,7 @@ func Get(teamID int) (*Team, error) {
 	if err != nil {
 		return nil, fmt.Errorf("error in getting the team info: %v+", err)
 	}
+	defer resp.Body.Close()
 
 	team := new(APIResponse)
 	err = json.NewDecoder(resp.Body).Decode(team)

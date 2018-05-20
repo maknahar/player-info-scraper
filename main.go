@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"sort"
 	"strconv"
@@ -13,7 +14,6 @@ import (
 func main() {
 	limit, _ := strconv.Atoi(os.Getenv("LIMIT"))
 	if limit == 0 {
-		//log.Println("LIMIT is not set. Defaulting to 1000")
 		limit = 1000
 	}
 
@@ -22,7 +22,11 @@ func main() {
 
 	teams := team.Scrape(teamNames, limit)
 	playersWithTeam, playerWithTeamLookup := make([]player.WithTeam, 0), make(map[string]int)
-	for _, t := range teams {
+	for teamName, t := range teams {
+		if t == nil {
+			log.Println("Unable to find info for team", teamName)
+			continue
+		}
 		for _, p := range t.Players {
 			if index, ok := playerWithTeamLookup[p.ID]; ok {
 				playersWithTeam[index].Teams = append(playersWithTeam[index].Teams, t.Name)

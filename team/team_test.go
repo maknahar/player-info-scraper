@@ -1,8 +1,9 @@
 package team
 
 import (
-	utils "github.com/maknahar/go-utils"
 	"testing"
+
+	utils "github.com/maknahar/go-utils"
 )
 
 func TestScrape(t *testing.T) {
