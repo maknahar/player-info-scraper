@@ -1,7 +1,7 @@
 # player-info-scraper
 A utility to retrieve the football players info
 
-## Environment variables
+## Environment Variables
 - LIMIT (Integer) : LIMIT specify the maximum API 
     calls that should be made to scrape the team info.
     Default value is 1000.
@@ -9,6 +9,14 @@ A utility to retrieve the football players info
 - TEAM_API_ENDPOINT (string): API endpoint to retrieve
     the team info. Default value is 
     https://vintagemonster.onefootball.com/api/teams/en/%team_id%.json
+
+## How To Run
+1. > go build
+2. > ./player-info-scraper
+
+or
+
+  > go run main.go
 
 ## Sample Input
 Put a file `teams.json` in the root directory 
@@ -33,8 +41,10 @@ Sample Format:
 }
 ```
 
-## Sample Output
+## Sample Execution
 Player name in sorted order; Player Age; Team names in Sorted order
+
+NOTE: Accent will be ignored while sorting
 ```
 >go run main.go 
 
