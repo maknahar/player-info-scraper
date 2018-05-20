@@ -7,9 +7,23 @@
   revision = "e0e1887344d7755c26eabdfc5e563c8658c39d39"
   version = "0.1"
 
+[[projects]]
+  name = "golang.org/x/text"
+  packages = [
+    "internal/gen",
+    "internal/triegen",
+    "internal/ucd",
+    "runes",
+    "transform",
+    "unicode/cldr",
+    "unicode/norm"
+  ]
+  revision = "f21a4dfb5e38f5895301dc265a8def02365cc3d0"
+  version = "v0.3.0"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "63438251dc358ee18aca1fc98a45578b6353940797a0ad4a44aee8f74a3edac1"
+  inputs-digest = "026c7ec5c4662e1bd9d0d3b476e54e4317d795580ec14950553a3cd5ebd27ef1"
   solver-name = "gps-cdcl"
   solver-version = 1

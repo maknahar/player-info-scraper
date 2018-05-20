@@ -1,8 +1,8 @@
 package gutils
 
 import (
-	"runtime"
 	"testing"
+	"runtime"
 )
 
 func ShouldBeEqual(t *testing.T, expected, actual interface{}) {
