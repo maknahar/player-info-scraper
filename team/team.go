@@ -40,6 +40,7 @@ func Scrape(teamNames []string, limit int) (teams map[string]*Team) {
 			team, err := Get(i)
 			if err != nil {
 				log.Printf("Error in getting team info with ID %d . %v", i, err)
+				return
 			}
 
 			if _, ok := teams[team.Name]; ok {

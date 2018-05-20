@@ -7,9 +7,15 @@ import (
 	"sort"
 	"strconv"
 
+	"encoding/json"
 	"github.com/maknahar/player-info-scraper/player"
 	"github.com/maknahar/player-info-scraper/team"
+	"io/ioutil"
 )
+
+type Teams struct {
+	Names []string `json:"names"`
+}
 
 func main() {
 	limit, _ := strconv.Atoi(os.Getenv("LIMIT"))
@@ -17,10 +23,18 @@ func main() {
 		limit = 1000
 	}
 
-	teamNames := []string{"Germany", "England", "France", "Spain", "Manchester Utd", "Arsenal", "Chelsea",
-		"Barcelona", "Real Madrid", "FC Bayern Munich"}
+	data, err := ioutil.ReadFile("teams.json")
+	if err != nil {
+		log.Fatalf("Could not read the team.json file. Error: %v", err)
+	}
 
-	teams := team.Scrape(teamNames, limit)
+	input := new(Teams)
+	err = json.Unmarshal(data, input)
+	if err != nil {
+		log.Fatalf("Could not decode the team.json file. Error: %v", err)
+	}
+
+	teams := team.Scrape(input.Names, limit)
 	playersWithTeam, playerWithTeamLookup := make([]player.WithTeam, 0), make(map[string]int)
 	for teamName, t := range teams {
 		if t == nil {

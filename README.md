@@ -10,6 +10,29 @@ A utility to retrieve the football players info
     the team info. Default value is 
     https://vintagemonster.onefootball.com/api/teams/en/%team_id%.json
 
+## Sample Input
+Put a file `teams.json` in the root directory 
+which contain the teams name that need to be analyzed.
+
+Sample Format:
+
+```
+{
+  "names": [
+    "Germany",
+    "England",
+    "France",
+    "Spain",
+    "Manchester Utd",
+    "Arsenal",
+    "Chelsea",
+    "Barcelona",
+    "Real Madrid",
+    "FC Bayern Munich"
+  ]
+}
+```
+
 ## Sample Output
 Player name in sorted order; Player Age; Team names in Sorted order
 ```
